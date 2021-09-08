@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "lib": [
+      "ES2020",
+      "DOM"
+    ],
+    "allowUmdGlobalAccess": true,
+    "allowSyntheticDefaultImports": true,
+    "rootDir": "src",
+    "baseUrl": "src",
+    "paths": {
+      "blocks/*": ["pages/*"],
+      "components/*": ["components/*"],
+      "context/*": ["context/*"],
+      "ds/*": ["ds/*"],
+      "hooks/*": ["hooks/*"],
+      "pages/*": ["pages/*"],
+      "templates/*": ["templates/*"],
+      "utils/*": ["utils/*"]
+    },
+    "typeRoots": [
+      "node_modules/@types",
+      "src/@types"
+    ]
+  }
+}

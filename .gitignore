@@ -1,0 +1,8 @@
+.cache
+public
+node_modules
+.env.*
+coverage
+yarn-error.log
+build
+dist
