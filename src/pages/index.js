@@ -11,7 +11,7 @@ const Home = () => {
           <Header.Heading width="70%">
             Business name
           </Header.Heading>
-          <Header.Action width="30%" type="business" />
+          <Header.Action width="30%" type="business" variant="primary" />
         </Header>
         <Table>
           <Table.Head>
@@ -30,7 +30,8 @@ const Home = () => {
                 Google
               </Table.Cell>
               <Table.Cell width="30%">
-                Actions
+                <input type="button" data-variant="info" value="Edit" />
+                <input type="button" data-variant="danger" value="Delete" />
               </Table.Cell>
             </Table.Row>
             <Table.Row>
@@ -38,7 +39,8 @@ const Home = () => {
                 Apple
               </Table.Cell>
               <Table.Cell width="30%">
-                Actions
+                <input type="button" data-variant="info" value="Edit" />
+                <input type="button" data-variant="danger" value="Delete" />
               </Table.Cell>
             </Table.Row>
             <Table.Row>
@@ -46,7 +48,8 @@ const Home = () => {
                 Facebook
               </Table.Cell>
               <Table.Cell width="30%">
-                Actions
+                <input type="button" data-variant="info" value="Edit" />
+                <input type="button" data-variant="danger" value="Delete" />
               </Table.Cell>
             </Table.Row>
           </Table.Body>
