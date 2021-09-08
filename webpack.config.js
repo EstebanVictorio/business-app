@@ -34,6 +34,7 @@ const config = {
   },
   output: {
     path: buildPath,
+    publicPath: '/',
   },
   devServer,
   plugins: [

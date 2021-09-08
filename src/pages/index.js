@@ -2,6 +2,7 @@ import Base from "templates/Base"
 import Table from "components/Table"
 import Header from "blocks/Header"
 import Section from "blocks/Section"
+import { Link } from "react-router-dom"
 
 const Home = () => {
   return (
@@ -27,7 +28,9 @@ const Home = () => {
           <Table.Body>
             <Table.Row>
               <Table.Cell width="70%">
-                Google
+                <Link to="/business/google">
+                  Google
+                </Link>
               </Table.Cell>
               <Table.Cell width="30%">
                 <input type="button" data-variant="info" value="Edit" />
@@ -36,7 +39,9 @@ const Home = () => {
             </Table.Row>
             <Table.Row>
               <Table.Cell width="70%">
-                Apple
+                <Link to="/business/apple">
+                  Apple
+                </Link>
               </Table.Cell>
               <Table.Cell width="30%">
                 <input type="button" data-variant="info" value="Edit" />
@@ -45,7 +50,9 @@ const Home = () => {
             </Table.Row>
             <Table.Row>
               <Table.Cell width="70%">
-                Facebook
+                <Link to="/business/facebook">
+                  Facebook
+                </Link>
               </Table.Cell>
               <Table.Cell width="30%">
                 <input type="button" data-variant="info" value="Edit" />

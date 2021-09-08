@@ -14,6 +14,10 @@ const palette = css`
     fill: var(--icon-fill);
   }
 
+  a {
+    color: var(--link-color);
+  }
+
   [data-theme="light"] {
     background-color: var(--white);
     color: var(--black);
@@ -50,6 +54,7 @@ const palette = css`
     --danger: var(--white);
     --bg-danger: var(--red);
     --danger-border: var(--black);
+    --link-color: cyan;
   }
 
 
@@ -67,6 +72,7 @@ const palette = css`
     color: var(--danger);
     background-color: var(--bg-danger);
   }
+
 
   button[data-variant],
   input[type="button"][data-variant] {
