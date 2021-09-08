@@ -4,11 +4,13 @@ import { Global, css } from "@emotion/react"
 import flow from "./flow"
 import palette from "./palette"
 import typeface from "./typeface"
+import norm from "./norm"
 
 const styles = css`
   ${flow}
   ${palette}
   ${typeface}
+  ${norm}
 `
 
 /** @type {FC} GlobalStyles */
