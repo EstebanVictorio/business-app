@@ -11,8 +11,8 @@ import Head from "./Head"
 
 const styles = css`
   width: 100%;
-  margin: 0.5rem 0;
   max-width: 90rem;
+  margin: 0.5rem auto;
   border-collapse: collapse;
 
   th {
@@ -20,7 +20,11 @@ const styles = css`
     background-color: var(--header-bg);
   }
 
-  
+  td {
+    border: 0.5px solid;
+  }
+
+
   &[data-theme="light"] {
     --header-bg: #CCCCCC;
   }
@@ -34,7 +38,7 @@ const styles = css`
  * @type {FC & {
  *  Header: FC<import('./Header').Props>
  *  Row: FC
- *  Cell: FC
+ *  Cell: FC<import('./Cell').Props>
  *  Head: FC
  *  Body: FC
  * } Table

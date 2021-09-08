@@ -1,12 +1,18 @@
 import Base from "templates/Base"
 import Table from "components/Table"
+import Header from "blocks/Header"
 import Section from "blocks/Section"
 
 const Home = () => {
-
   return (
     <Base>
       <Section>
+        <Header>
+          <Header.Heading width="70%">
+            Business name
+          </Header.Heading>
+          <Header.Action width="30%" type="business" />
+        </Header>
         <Table>
           <Table.Head>
             <Table.Row>
@@ -18,6 +24,32 @@ const Home = () => {
               </Table.Header>
             </Table.Row>
           </Table.Head>
+          <Table.Body>
+            <Table.Row>
+              <Table.Cell width="70%">
+                Google
+              </Table.Cell>
+              <Table.Cell width="30%">
+                Actions
+              </Table.Cell>
+            </Table.Row>
+            <Table.Row>
+              <Table.Cell width="70%">
+                Apple
+              </Table.Cell>
+              <Table.Cell width="30%">
+                Actions
+              </Table.Cell>
+            </Table.Row>
+            <Table.Row>
+              <Table.Cell width="70%">
+                Facebook
+              </Table.Cell>
+              <Table.Cell width="30%">
+                Actions
+              </Table.Cell>
+            </Table.Row>
+          </Table.Body>
         </Table>
       </Section>
     </Base>

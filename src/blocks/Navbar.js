@@ -16,6 +16,12 @@ const styles = css`
   border-bottom: 1px solid lightgray;
   display: flex;
   align-items: center;
+
+  [data-content] {
+    width: 100%;
+    max-width: 90rem;
+    margin: 0 auto;
+  }
 `
 
 /**
@@ -34,20 +40,22 @@ const Navbar = () => {
 
   return (
     <nav css={styles}>
-      <Toggle>
-        <Toggle.Option selected={selected === 'light'} onChange={() => {
-          handleToggleChange('light')
-          setTheme('light')
-        }}>
-          <LightModeIcon />
-        </Toggle.Option>
-        <Toggle.Option selected={selected === 'dark'} onChange={() => {
-          handleToggleChange('dark')
-          setTheme('dark')
-        }}>
-          <DarkModeIcon />
-        </Toggle.Option>
-      </Toggle>
+      <div data-content>
+        <Toggle>
+          <Toggle.Option selected={selected === 'light'} onChange={() => {
+            handleToggleChange('light')
+            setTheme('light')
+          }}>
+            <LightModeIcon />
+          </Toggle.Option>
+          <Toggle.Option selected={selected === 'dark'} onChange={() => {
+            handleToggleChange('dark')
+            setTheme('dark')
+          }}>
+            <DarkModeIcon />
+          </Toggle.Option>
+        </Toggle>
+      </div>
     </nav>
   )
 }

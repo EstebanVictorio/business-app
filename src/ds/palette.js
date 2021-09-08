@@ -18,7 +18,6 @@ const palette = css`
     --icon-fill: var(--black);
   }
 
-
   [data-theme="dark"] {
     background-color: var(--black);
     color: var(--white);
