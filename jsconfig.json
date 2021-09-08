@@ -10,7 +10,7 @@
     "rootDir": "src",
     "baseUrl": "src",
     "paths": {
-      "blocks/*": ["pages/*"],
+      "blocks/*": ["blocks/*"],
       "components/*": ["components/*"],
       "context/*": ["context/*"],
       "ds/*": ["ds/*"],
