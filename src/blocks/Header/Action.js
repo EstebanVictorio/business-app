@@ -7,16 +7,17 @@ import { jsx, css } from "@emotion/react"
  *  type: 'person' | 'business'
  *  width: '10%' | '20%' | '30%' | '40%' | '50%' | '60%' | '70%'
  *  variant: 'primary'
+ *  onClick?: () => void
  * }} Props
  * @type {FC<Props>} Action
  **/
-const Action = ({ type, variant, width }) => {
+const Action = ({ type, variant, width, onClick }) => {
   return (
     <div css={css`
       width: ${width};
       display: flex;
     `}>
-      <input css={css`width:100%;`} type="button" value={type} data-variant={variant} />
+      <input css={css`width:100%;`} type="button" value={type} data-variant={variant} onClick={onClick}/>
     </div>
   )
 }
