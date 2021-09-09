@@ -6,7 +6,7 @@ import LightModeIcon from "components/icons/LightMode"
 import DarkModeIcon from "components/icons/DarkMode"
 import { useContext } from 'react'
 import { ThemeContext } from "context/ThemeContext"
-
+import { Link } from "react-router-dom"
 
 const styles = css`
   width: 100%;
@@ -21,6 +21,11 @@ const styles = css`
     width: 100%;
     max-width: 90rem;
     margin: 0 auto;
+    display: flex;
+
+    [data-brand] {
+      flex-grow: 1;
+    }
   }
 `
 
@@ -41,6 +46,9 @@ const Navbar = () => {
   return (
     <nav css={styles}>
       <div data-content>
+        <span data-brand>
+          <Link to="/">Business App</Link>
+        </span>
         <Toggle>
           <Toggle.Option selected={selected === 'light'} onChange={() => {
             handleToggleChange('light')
