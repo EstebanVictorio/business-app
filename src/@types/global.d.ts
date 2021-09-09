@@ -4,7 +4,7 @@
 
 declare let React: typeof React
 declare type FC<P = Record<string, unknown>> = React.FC<P>
-
+declare let API_KEY: string
 
 declare module '*.ttf' {
 
