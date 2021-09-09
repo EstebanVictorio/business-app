@@ -1,13 +1,16 @@
 import Base from "templates/Base"
 import Table from "components/Table"
+import Modal from "components/Modal"
 import Header from "blocks/Header"
 import Section from "blocks/Section"
+
 import { Link } from "react-router-dom"
 import { query } from "store/reducer/business"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
 const Home = () => {
+  const [modalOpen, setModalState] = useState(false)
   const dispatch = useDispatch()
   const businesses = useSelector(state => state.business.businesses)
 
@@ -17,12 +20,16 @@ const Home = () => {
 
   return (
     <Base>
+      <Modal open={modalOpen}>
+        <input type="button" value="Close" onClick={() => setModalState(false)}/>
+        This is a modal
+      </Modal>
       <Section>
         <Header>
           <Header.Heading width="70%">
             Business name
           </Header.Heading>
-          <Header.Action width="30%" type="business" variant="primary" />
+          <Header.Action width="30%" type="business" variant="primary" onClick={() => setModalState(true)}/>
         </Header>
         <Table>
           <Table.Head>

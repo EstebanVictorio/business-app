@@ -40,6 +40,8 @@ const palette = css`
   [data-theme="dark"] {
     background-color: var(--black);
     color: var(--white);
+    --dialog-color: var(--white);
+    --dialog-bg-color: var(--black);
     --icon-stroke: var(--white);
     --icon-fill: var(--white);
     
@@ -55,6 +57,11 @@ const palette = css`
     --bg-danger: var(--red);
     --danger-border: var(--black);
     --link-color: cyan;
+  }
+
+  dialog {
+    color: var(--dialog-color);
+    background-color: var(--dialog-bg-color);
   }
 
 
