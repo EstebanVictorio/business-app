@@ -2,11 +2,10 @@
 import { jsx, css } from "@emotion/react"
 import Toggle from "components/Toggle"
 import useToggle from "hooks/useToggle"
-import LightModeIcon from "components/icons/LightMode"
-import DarkModeIcon from "components/icons/DarkMode"
 import { useContext } from 'react'
 import { ThemeContext } from "context/ThemeContext"
 import { Link } from "react-router-dom"
+import Icon from "components/Icon"
 
 const styles = css`
   width: 100%;
@@ -54,13 +53,13 @@ const Navbar = () => {
             handleToggleChange('light')
             setTheme('light')
           }}>
-            <LightModeIcon />
+            <Icon featherIcon="icon-sun"/>
           </Toggle.Option>
           <Toggle.Option selected={selected === 'dark'} onChange={() => {
             handleToggleChange('dark')
             setTheme('dark')
           }}>
-            <DarkModeIcon />
+            <Icon featherIcon="icon-moon"/>
           </Toggle.Option>
         </Toggle>
       </div>

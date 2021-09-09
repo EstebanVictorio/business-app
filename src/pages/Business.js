@@ -5,9 +5,9 @@ import Base from "templates/Base"
 import { useParams } from "react-router-dom"
 import useToggle from "hooks/useToggle"
 import Toggle from "components/Toggle"
-import GridIcon from "components/icons/Grid"
-import ListIcon from "components/icons/List"
+import Icon from "components/Icon"
 import Card from "components/Card"
+import Table from "components/Table"
 
 
 const LazyCardGridTemplate = lazy(() => import('templates/CardGridTemplate'))
@@ -50,10 +50,10 @@ const Business = () => {
         </Header>
         <Toggle>
           <Toggle.Option selected={selected === 'card-grid'} onChange={handleCardGridSelect}>
-            <GridIcon />
+            <Icon featherIcon="icon-grid" />
           </Toggle.Option>
           <Toggle.Option selected={selected === 'table'} onChange={handleTableSelect}>
-            <ListIcon />
+            <Icon featherIcon="icon-list" />
           </Toggle.Option>
         </Toggle>
       {
@@ -90,9 +90,45 @@ const Business = () => {
       }
       {
         selected === 'table' && (
-          <Suspense fallback={<div>Loading template...</div>}>
-            <LazyTableTemplate />
-          </Suspense>
+          <Table>
+            <Table.Head>
+              <Table.Row>
+                <Table.Header width="50%">
+                  Name
+                </Table.Header>
+                <Table.Header width="25%">
+                  Position
+                </Table.Header>
+                <Table.Header width="25%">
+                  Actions
+                </Table.Header>
+              </Table.Row>
+            </Table.Head>
+            <Table.Body>
+              <Table.Row>
+                <Table.Cell>
+                  Sara
+                </Table.Cell>
+                <Table.Cell>
+                  CEO
+                </Table.Cell>
+                <Table.Cell>
+                  Actions
+                </Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell width="50%">
+                  Tim
+                </Table.Cell>
+                <Table.Cell width="25%">
+                  CCO
+                </Table.Cell>
+                <Table.Cell width="25%">
+                  Actions
+                </Table.Cell>
+              </Table.Row>
+            </Table.Body>
+          </Table>
         )
       }
       </Section>

@@ -17,3 +17,15 @@ declare module '*.otf' {
 declare module '*.png' {
   
 }
+
+declare module '*.eot' {
+  
+}
+
+declare module '*.svg' {
+  
+}
+
+declare module '*.woff' {
+  
+}
