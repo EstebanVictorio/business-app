@@ -1,6 +1,11 @@
 const path = require("path")
 const HWP = require("html-webpack-plugin")
-const { ProvidePlugin } = require('webpack')
+const { ProvidePlugin, DefinePlugin } = require('webpack')
+const dotenv = require("dotenv")
+
+dotenv.config({
+  path: `./.env${process.env.NODE_ENV || ".development"}`
+})
 
 const root = path.resolve(__dirname, "src")
 const buildPath = path.resolve(__dirname, "build")
@@ -44,6 +49,9 @@ const config = {
     }),
     new ProvidePlugin({
       React: 'react',
+    }),
+    new DefinePlugin({
+      API_KEY: JSON.stringify(process.env.API_KEY)
     })
   ],
   module: {
