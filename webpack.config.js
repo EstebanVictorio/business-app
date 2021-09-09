@@ -27,12 +27,14 @@ const config = {
   },
   resolve: {
     alias: {
+      api: `${root}/api`,
       blocks: `${root}/blocks`,
       components: `${root}/components`,
       context: `${root}/context`,
       ds: `${root}/ds`,
       hooks: `${root}/hooks`,
       pages: `${root}/pages`,
+      store: `${root}/store`,
       templates: `${root}/templates`,
       utils: `${root}/utils`,
     }
@@ -51,7 +53,8 @@ const config = {
       React: 'react',
     }),
     new DefinePlugin({
-      API_KEY: JSON.stringify(process.env.API_KEY)
+      API_KEY: JSON.stringify(process.env.API_KEY),
+      BASE_API_URL: JSON.stringify(process.env.BASE_API_URL),
     })
   ],
   module: {
