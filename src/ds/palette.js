@@ -4,9 +4,9 @@ const palette = css`
     --white: #f5f5f5;
     --black: #1a1a1a;
     --blue: #0074D9;
-    --spacey: #2E294E;
+    --spacey: #0074D9;
     --green: #1B998B;
-    --red: #FF4136;
+    --red: #CA054D;
   }
 
   svg > path {
@@ -18,9 +18,15 @@ const palette = css`
     color: var(--link-color);
   }
 
+  [data-theme] {
+    background-color: var(--bg-color);
+    color: var(--color);
+  }
+
   [data-theme="light"] {
-    background-color: var(--white);
-    color: var(--black);
+    --bg-color: var(--white);
+    --color: var(--black);
+    --table-cell-bg-color: lightgray;
     --dialog-bg-color: var(--white);
     --icon-stroke: var(--black);
     --icon-fill: var(--black);
@@ -36,11 +42,13 @@ const palette = css`
     --danger: var(--white);
     --bg-danger: var(--red);
     --info-border: var(--black);
+    --danger-border: var(--black);
   }
 
   [data-theme="dark"] {
-    background-color: var(--black);
-    color: var(--white);
+    --bg-color: var(--black);
+    --color: var(--white);
+    --table-cell-bg-color: black;
     --dialog-color: var(--white);
     --dialog-bg-color: var(--black);
     --icon-stroke: var(--white);
@@ -51,13 +59,17 @@ const palette = css`
     --primary-border: var(--white);
 
     --info: var(--white);
-    --bg-info: var(--green);
+    --bg-info: var(--spacey);
     --info-border: var(--white);
 
     --danger: var(--white);
     --bg-danger: var(--red);
-    --danger-border: var(--black);
+    --danger-border: var(--white);
     --link-color: cyan;
+  }
+
+  td {
+    background-color: var(--table-cell-bg-color);
   }
 
   dialog {

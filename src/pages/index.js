@@ -1,81 +1,113 @@
-/** @jsx jsx */
-import { jsx, css } from "@emotion/react"
 import Base from "templates/Base"
-import Table from "components/Table"
-import Modal from "components/Modal"
 import Header from "blocks/Header"
 import Section from "blocks/Section"
-import Icon from "components/Icon"
+import EditDialog from "blocks/Business/EditDialog"
+import CreateDialog from "blocks/Business/CreateDialog"
+import DeleteDialog from "blocks/Business/DeleteDialog"
+import BusinessTable from "blocks/Business/BusinessTable"
 
-import { Link } from "react-router-dom"
-import { query } from "store/reducer/business"
+import { queryLoading } from "store/slice/business"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
 
+
 const Home = () => {
-  const [modalOpen, setModalState] = useState(false)
+  const [createDialogOpen, setCreateDialogOpen] = useState(false)
+  const [
+    { open: editDialogOpen, draftBusiness: editDraftBusiness },
+    setEditDialogOpen
+  ] = useState({ open: false, draftBusiness: null })
+
+  const [
+    { open: deleteDialogOpen, draftBusiness: deleteDraftBusiness },
+    setDeleteDialogOpen
+  ] = useState({ open: false, draftBusiness: null })
+
   const dispatch = useDispatch()
   const businesses = useSelector(state => state.business.businesses)
 
+  const created = useSelector(state => state.business.createStatus === 'SUCCESS')
+  const edited = useSelector(state => state.business.editStatus === 'SUCCESS')
+  const deleted = useSelector(state => state.business.deleteStatus === 'SUCCESS')
+
   useEffect(() => {
-    dispatch(query())
+    if(created) {
+      setCreateDialogOpen(false)
+    }
+  }, [created])
+
+  useEffect(() => {
+    if(edited) {
+      setEditDialogOpen({
+        open: false,
+        draftBusiness: null,
+      })
+    }
+  }, [edited])
+
+  useEffect(() => {
+    if(deleted) {
+      setDeleteDialogOpen({
+        open: false,
+        draftBusiness: null,
+      })
+    }
+  }, [deleted])
+
+
+  useEffect(() => {
+    dispatch(queryLoading())
   }, [])
 
   return (
     <Base>
-      <Modal open={modalOpen}>
-        <label>
-          <input type="button" onClick={() => setModalState(false)}/>
-          <span>
-            <Icon featherIcon="icon-x" />
-          </span>
-        </label>
-        <label css={css`display: block;`}>
-          <span>Name</span>
-          <input placeholder="Business name" />
-        </label>
-        <label>
-          <input type="button" onClick={() => setModalState(false)} value="Cancel" />
-        </label>
-        <label>
-          <input type="button" onClick={() => setModalState(false)} value="Create" />
-        </label>
-      </Modal>
+      <CreateDialog
+        open={createDialogOpen}
+        onClose={() => setCreateDialogOpen(false)}
+      />
+      <EditDialog
+        businessId={editDraftBusiness?.businessId}
+        name={editDraftBusiness?.businessName}
+        open={editDialogOpen}
+        onClose={() => setEditDialogOpen({
+          open: false,
+          draftBusiness: null
+        })}
+      />
+      <DeleteDialog
+        businessId={deleteDraftBusiness?.businessId}
+        name={deleteDraftBusiness?.businessName}
+        open={deleteDialogOpen}
+        onClose={() => setDeleteDialogOpen({
+          open: false,
+          draftBusiness: null
+        })}
+      />
       <Section>
         <Header>
           <Header.Heading width="70%">
-            Business name
+            Welcome!
           </Header.Heading>
-          <Header.Action width="30%" type="business" variant="primary" onClick={() => setModalState(true)}/>
+          <Header.Action
+            width="30%"
+            type="business"
+            variant="primary"
+            onClick={() => setCreateDialogOpen(true)}
+            value="Create Business"
+          />
         </Header>
-        <Table>
-          <Table.Head>
-            <Table.Row>
-              <Table.Header width="70%">
-                Business
-              </Table.Header>
-              <Table.Header width="30%">
-                Actions
-              </Table.Header>
-            </Table.Row>
-          </Table.Head>
-          <Table.Body>
-            {businesses.map(({ businessId, name }) => (
-              <Table.Row key={businessId}>
-                <Table.Cell width="70%">
-                  <Link to={`/business/${name}`}>
-                    {name}
-                  </Link>
-                </Table.Cell>
-                <Table.Cell width="30%">
-                  <input type="button" data-variant="info" value="Edit" />
-                  <input type="button" data-variant="danger" value="Delete" />
-                </Table.Cell>
-              </Table.Row>
-            ))}
-          </Table.Body>
-        </Table>
+        <BusinessTable
+          businesses={businesses}
+          editAction={(businessId, businessName) => setEditDialogOpen({
+            open: true,
+            draftBusiness: { businessId, businessName, }
+          })}
+          deleteAction={(businessId, businessName) => setDeleteDialogOpen({
+            open: true,
+            draftBusiness: { businessId, businessName }
+          })}
+        />
       </Section>
     </Base>
   )

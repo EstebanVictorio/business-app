@@ -11,7 +11,6 @@ import Table from "components/Table"
 
 
 const LazyCardGridTemplate = lazy(() => import('templates/CardGridTemplate'))
-const LazyTableTemplate = lazy(() => import('templates/TableTemplate'))
 
 
 /**
@@ -46,7 +45,7 @@ const Business = () => {
           <Header.Heading width="70%">
             <h1>{businessName}</h1>
           </Header.Heading>
-          <Header.Action width="30%" type="business" variant="primary" />
+          <Header.Action width="30%" type="business" variant="primary" value="Create Business" />
         </Header>
         <Toggle>
           <Toggle.Option selected={selected === 'card-grid'} onChange={handleCardGridSelect}>

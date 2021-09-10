@@ -21,6 +21,7 @@ const styles = css`
     max-width: 90rem;
     margin: 0 auto;
     display: flex;
+    align-items: center;
 
     [data-brand] {
       flex-grow: 1;

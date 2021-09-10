@@ -14,14 +14,18 @@ const styles = css`
   max-width: 90rem;
   margin: 0.5rem auto;
   border-collapse: collapse;
+  border-radius: 4px;
+  overflow: hidden;
 
   th {
-    border: 1px solid;
-    background-color: var(--header-bg);
+    color: var(--white);
+    background-color: var(--blue);
   }
 
   td {
-    border: 0.5px solid;
+    padding: 0.25rem 0.5rem;
+    box-sizing: border-box;
+    border-bottom: 0.5rem solid var(--bg-color);
   }
 
 
