@@ -21,6 +21,7 @@ const palette = css`
   [data-theme="light"] {
     background-color: var(--white);
     color: var(--black);
+    --dialog-bg-color: var(--white);
     --icon-stroke: var(--black);
     --icon-fill: var(--black);
 
@@ -61,6 +62,9 @@ const palette = css`
 
   dialog {
     color: var(--dialog-color);
+  }
+
+  dialog > [data-content] {
     background-color: var(--dialog-bg-color);
   }
 
