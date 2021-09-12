@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit"
 import createSagaMiddleware from "redux-saga"
-import business from "./reducer/business"
+import business from "./slice/business"
 import masterSaga from "./sagas"
 
 

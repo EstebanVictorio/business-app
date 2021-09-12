@@ -7,6 +7,10 @@ const styles = css`
   width: 100%;
   max-width: 90rem;
   margin: 0 auto;
+
+  @media screen and (min-width:1440px) {
+    padding: 0;
+  }
 `
 
 /** @type {FC} Section */
