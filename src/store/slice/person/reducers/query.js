@@ -1,5 +1,5 @@
 /**
- * @type {BusinessReducer} query
+ * @type {PersonReducer} query
  */
 const query = {
   loading: (state) => {
@@ -7,7 +7,7 @@ const query = {
   },
   success: (state, action) => {
     state.queryStatus = 'SUCCESS'
-    state.businesses = action.payload.businesses
+    state.persons = action.payload.persons
   },
   failure: (state) => {
     state.queryStatus = 'FAILURE'
@@ -18,7 +18,7 @@ const query = {
 }
 
 /**
- * @type {BusinessReducer} querySingle
+ * @type {PersonReducer} querySingle
  */
 const querySingle = {
   loading: (state) => {
@@ -26,7 +26,7 @@ const querySingle = {
   },
   success: (state, action) => {
     state.querySingleStatus = 'SUCCESS'
-    state.business = action.payload.business
+    state.person = action.payload.person
   },
   failure: (state) => {
     state.querySingleStatus = 'FAILURE'

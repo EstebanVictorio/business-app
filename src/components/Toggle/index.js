@@ -4,6 +4,7 @@ import { jsx, css } from "@emotion/react"
 import Option from "./Option"
 
 const styles = css`
+  display: inline-block;
   > label {
     border-top: 1px solid lightgray;
     border-bottom: 1px solid lightgray;

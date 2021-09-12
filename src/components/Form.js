@@ -20,12 +20,14 @@ const Form = ({ children, onSubmit, validate }) => {
     if (form) {
       const formData = new FormData(form)
       const values = mapEntriesToValues(formData.entries())
+      
       if(validate && validate(values)) {
         onSubmit(values)
         form.reset()
         return
       }
-      onSubmit(values)
+
+      onSubmit()
       form.reset()
     }
   }, [onSubmit, validate])
