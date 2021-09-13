@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { add, del, edit, query, querySingle } from "./reducers"
 
+
 /**
- * @type {BusinessReducerState} initialState
+ * @type {PersonReducerState} initialState
  */
 const initialState = {
   createStatus: 'IDLE',
@@ -10,13 +11,14 @@ const initialState = {
   deleteStatus: 'IDLE',
   queryStatus: 'IDLE',
   querySingleStatus: 'IDLE',
-  businesses: [],
-  business: {}
+  persons: [],
+  person: {},
 }
 
-const business = createSlice({
+
+const person = createSlice({
   initialState,
-  name: 'business',
+  name: 'person',
   reducers: {
     addIdle: add.idle,
     addLoading: add.loading,
@@ -41,6 +43,7 @@ const business = createSlice({
   }
 })
 
+
 export const {
   addIdle,
   addLoading,
@@ -63,6 +66,6 @@ export const {
   querySingleSuccess,
   querySingleFailure,
   
-} = business.actions
+} = person.actions
 
-export default business.reducer
+export default person.reducer

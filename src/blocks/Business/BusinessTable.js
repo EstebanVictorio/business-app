@@ -25,7 +25,7 @@ const Business = ({ businesses, editAction, deleteAction }) => (
       {businesses.map(({ businessId, name }) => (
         <Table.Row key={businessId}>
           <Table.Cell width="70%">
-            <Link to={`/business/${name}`}>
+            <Link to={`/business/${businessId}`}>
               {name}
             </Link>
           </Table.Cell>

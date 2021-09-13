@@ -1,6 +1,6 @@
 /** @type {FC} Header */
 const Header = ({ children }) => (
-  <div data-header>{children}</div>
+  <header data-header>{children}</header>
 )
 
 export default Header

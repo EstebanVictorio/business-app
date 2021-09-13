@@ -8,6 +8,16 @@ const getBusinesses = async() => {
   return json
 }
 
+const getBusiness = async(businessId) => {
+  const response = await fetch(`${BASE_API_URL}/business/${businessId}`, { // eslint-disable-line
+    headers: {
+      'x-api-key': API_KEY, // eslint-disable-line
+    },
+  })
+  const json = await response.json()
+  return json
+}
+
 /**
  * 
  * @param {string} name
@@ -45,7 +55,7 @@ const createBusiness = async(name) => {
 
 /**
  * 
- * @param {string} name
+ * @param {string} businessId
  */
 const deleteBusiness = async(businessId) => {
   const response = await fetch(`${BASE_API_URL}/business/${businessId}`, { // eslint-disable-line
@@ -63,6 +73,7 @@ const deleteBusiness = async(businessId) => {
 }
 
 export {
+  getBusiness,
   getBusinesses,
   createBusiness,
   editBusiness,

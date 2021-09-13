@@ -20,6 +20,8 @@ const styles = css`
   th {
     color: var(--white);
     background-color: var(--blue);
+    text-align: start;
+    padding: 0.25rem 0.5rem;
   }
 
   td {

@@ -23,6 +23,7 @@ const styles = css`
 
   [data-header] {
     grid-area: header;
+    width: 100%;
   }
 
   [data-body] {
