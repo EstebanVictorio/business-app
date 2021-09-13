@@ -1,0 +1,9 @@
+{
+  "home": {
+    "createBusiness": "Create Business",
+    "welcome": "Welcome!"
+  },
+  "business": {
+    "createPerson": "Create Person"
+  }
+}

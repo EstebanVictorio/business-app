@@ -6,11 +6,14 @@ import CreateDialog from "blocks/Business/CreateDialog"
 import DeleteDialog from "blocks/Business/DeleteDialog"
 import BusinessTable from "blocks/Business/BusinessTable"
 
+import { useTranslation } from "react-i18next"
 import { queryLoading } from "store/slice/business"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
 const Home = () => {
+  const { t } = useTranslation('pages')
+  
   const [createDialogOpen, setCreateDialogOpen] = useState(false)
   const [
     { open: editDialogOpen, draftBusiness: editDraftBusiness },
@@ -91,7 +94,7 @@ const Home = () => {
             type="business"
             variant="primary"
             onClick={() => setCreateDialogOpen(true)}
-            value="Create Business"
+            value={t('home.createBusiness')}
           />
         </Header>
         <BusinessTable

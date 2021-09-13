@@ -2,6 +2,7 @@
 import { jsx, css } from "@emotion/react"
 import Toggle from "components/Toggle"
 import useToggle from "hooks/useToggle"
+import { useTranslation } from "react-i18next"
 import { useContext } from 'react'
 import { ThemeContext } from "context/ThemeContext"
 import { Link } from "react-router-dom"
@@ -34,7 +35,7 @@ const styles = css`
  **/
 const Navbar = () => {
   const { theme, setTheme } = useContext(ThemeContext)
-
+  const { t, i18n } = useTranslation('common')
   const { selected, handleSelect } = useToggle(theme)
 
   const handleToggleChange = (value) => {
@@ -49,6 +50,18 @@ const Navbar = () => {
         <span data-brand>
           <Link to="/">Business App</Link>
         </span>
+        <Toggle>
+          <Toggle.Option selected={i18n.language === 'en'} onChange={() => {
+            i18n.changeLanguage('en')
+          }}>
+            {t('langEN')}
+          </Toggle.Option>
+          <Toggle.Option selected={i18n.language === 'es'} onChange={() => {
+            i18n.changeLanguage('es')
+          }}>
+            {t('langES')}
+          </Toggle.Option>
+        </Toggle>
         <Toggle>
           <Toggle.Option selected={selected === 'light'} onChange={() => {
             handleToggleChange('light')

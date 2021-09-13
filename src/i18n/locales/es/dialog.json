@@ -1,0 +1,11 @@
+{
+  "actions": {
+    "delete": "¿Estas seguro que quieres borrar a {{entity}}?"
+  },
+  "forms" : {
+    "name": "Nombre está vacío",
+    "role": "Posición está vacío",
+    "email": "Correo está vacío",
+    "phone": "Teléfono está vacío"
+  }
+}

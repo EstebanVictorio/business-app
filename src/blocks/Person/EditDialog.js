@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { editLoading } from "store/slice/person"
 import Modal from "components/Modal"
+import { useTranslation } from "react-i18next"
 
 const titleStyles = css`
   margin: 0;
@@ -20,6 +21,10 @@ const fieldsetStyles = css`
   margin: 2rem 0;
   border: none;
   padding: 0;
+
+  label span {
+    display: block;
+  }
 
   input {
     box-sizing: border-box;
@@ -54,6 +59,7 @@ const Edit = ({ personName, personId, personRole, personEmail, personPhone, busi
   const [roleValue, setRoleValue] = useState('')
   const [emailValue, setEmailValue] = useState('')
   const [phoneValue, setPhoneValue] = useState('')
+  const { t } = useTranslation(['common', 'dialog'])
 
   /**
   *
@@ -99,19 +105,19 @@ const Edit = ({ personName, personId, personRole, personEmail, personPhone, busi
      const validateErrors = []
  
      if (!values['person-name']) {
-       validateErrors.push('Name is missing')
+       validateErrors.push({ type: 'name', pass: false })
      }
  
      if (!values['person-role']) {
-       validateErrors.push('Role is missing')
+       validateErrors.push({ type: 'role', pass: false })
      }
  
      if (!values['person-email']) {
-       validateErrors.push('Email is missing')
+       validateErrors.push({ type: 'email', pass: false })
      }
  
      if (!values['person-phone']) {
-       validateErrors.push('Phone is missing')
+       validateErrors.push({ type: 'phone', pass: false })
      }
  
      if(validateErrors.length > 0) {
@@ -146,19 +152,27 @@ const Edit = ({ personName, personId, personRole, personEmail, personPhone, busi
     <Modal open={open} onClose={onClose}>
       <Form onSubmit={onSubmit} validate={validate}>
         <div css={containerStyles}>
-          <h2 css={titleStyles}>Edit</h2>
-          {errors.length > 0 ? (
-            <ul>
-              {errors.map((error, i) => <li key={`edit-error-${i}`}>{error}</li>)}
-            </ul>
-          ) : null}
+          <h2 css={titleStyles}>{t('common:actions.edit')}</h2>
+          <Form.Errors errors={errors} />
           <fieldset css={fieldsetStyles}>
-            <input name="person-name" value={nameValue} onChange={handleNameChange}/>
-            <input name="person-role" value={roleValue} onChange={handleRoleChange}/>
-            <input name="person-email"type="email" value={emailValue} onChange={handleEmailChange}/>
-            <input name="person-phone" type="number" value={phoneValue} onChange={handlePhoneChange}/>
-            <input data-edit="cancel" type="button" value="Cancel" onClick={onClose} />
-            <input data-edit="confirm" data-variant="info" type="submit" value="Edit" />
+            <label>
+              <span>{t('common:labels.name')}</span>
+              <input name="person-name" value={nameValue} onChange={handleNameChange}/>
+            </label>
+            <label>
+              <span>{t('common:labels.role')}</span>
+              <input name="person-role" value={roleValue} onChange={handleRoleChange}/>
+            </label>
+            <label>
+              <span>{t('common:labels.email')}</span>
+              <input name="person-email"type="email" value={emailValue} onChange={handleEmailChange}/>
+            </label>
+            <label>
+              <span>{t('common:labels.phone')}</span>
+              <input name="person-phone" type="number" value={phoneValue} onChange={handlePhoneChange}/>
+            </label>
+            <input data-edit="cancel" type="button" value={t('common:actions.cancel')} onClick={onClose} />
+            <input data-edit="confirm" data-variant="info" type="submit" value={t('common:actions.edit')} />
           </fieldset>
         </div>
       </Form>
