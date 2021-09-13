@@ -2,6 +2,7 @@
 import { jsx, css } from "@emotion/react"
 import Form from "components/Form"
 import { useState } from "react"
+import { useTranslation } from "react-i18next"
 import { useDispatch } from "react-redux"
 import { addLoading } from "store/slice/business"
 import Modal from "components/Modal"
@@ -15,6 +16,10 @@ const fieldsetStyles = css`
   margin: 2rem 0;
   border: none;
   padding: 0;
+
+  label span {
+    display: block;
+  }
 
   input {
     box-sizing: border-box;
@@ -40,7 +45,7 @@ const fieldsetStyles = css`
 const Create = ({ open, onClose }) => {
   const [errors, setErrors] = useState([])
   const dispatch = useDispatch()
-
+  const { t } = useTranslation(['common', 'dialog'])
 
   /**
   * @param {{
@@ -50,7 +55,7 @@ const Create = ({ open, onClose }) => {
   const validate = (values) => {
     if (!values['business-name']) {
       setErrors([
-        'Business name is missing'
+        t('dialog:forms.name')
       ])
       return false
     }
@@ -65,14 +70,17 @@ const Create = ({ open, onClose }) => {
   return (
     <Modal open={open} onClose={onClose}>
       <Form onSubmit={onSubmit} validate={validate}>
-        <h2 css={titleStyles}>Create</h2>
+        <h2 css={titleStyles}>{t("common:actions.create")}</h2>
         <ul>
           {errors.map((error, i) => <li key={`create-error-${i}`}>{error}</li>)}
         </ul>
         <fieldset css={fieldsetStyles}>
-          <input name="business-name" />
-          <input data-create="cancel" type="button" value="Cancel" onClick={onClose} />
-          <input data-create="confirm" data-variant="info" type="submit" value="Create" />
+          <label>
+            <span>{t('common:labels.name')}</span>
+            <input name="business-name" />
+          </label>
+          <input data-create="cancel" type="button" value={t("common:actions.cancel")} onClick={onClose} />
+          <input data-create="confirm" data-variant="info" type="submit" value={t("common:actions.create")} />
         </fieldset>
       </Form>
     </Modal>

@@ -10,6 +10,7 @@ import { queryLoading } from "store/slice/person"
 import CreateDialog from "blocks/Person/CreateDialog"
 import EditDialog from "blocks/Person/EditDialog"
 import DeleteDialog from "blocks/Person/DeleteDialog"
+import { useTranslation } from "react-i18next"
 
 /**
  * 
@@ -21,6 +22,7 @@ const Business = () => {
    */
   const params = useParams()
   const dispatch = useDispatch()
+  const { t } = useTranslation('pages')
   const business = useSelector(state => state.business.business)
   const persons = useSelector(state => state.person.persons)
   const created = useSelector(state => state.person.createStatus === 'SUCCESS')
@@ -98,7 +100,7 @@ const Business = () => {
           <Header.Heading width="70%">
             <h1>{business.name}</h1>
           </Header.Heading>
-          <Header.Action width="30%" type="person" variant="primary" value="Create Person" onClick={() => setCreateDialogOpen(true)}/>
+          <Header.Action width="30%" type="person" variant="primary" value={t('business.createPerson')} onClick={() => setCreateDialogOpen(true)}/>
         </Header>
         <PersonRegistry
           persons={persons}

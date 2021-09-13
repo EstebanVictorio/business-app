@@ -16,6 +16,7 @@
       "context/*": ["context/*"],
       "ds/*": ["ds/*"],
       "hooks/*": ["hooks/*"],
+      "i18n/*": ["i18n/*"],
       "pages/*": ["pages/*"],
       "templates/*": ["templates/*"],
       "utils/*": ["utils/*"]

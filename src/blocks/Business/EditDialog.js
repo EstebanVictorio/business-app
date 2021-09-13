@@ -3,6 +3,7 @@ import { jsx, css } from "@emotion/react"
 import Form from "components/Form"
 import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
+import { useTranslation } from "react-i18next"
 import { editLoading } from "store/slice/business"
 import Modal from "components/Modal"
 
@@ -20,6 +21,10 @@ const fieldsetStyles = css`
   margin: 2rem 0;
   border: none;
   padding: 0;
+
+  label span {
+    display: block;
+  }
 
   input {
     box-sizing: border-box;
@@ -47,6 +52,7 @@ const fieldsetStyles = css`
  */
 const Edit = ({ name, businessId, open, onClose }) => {
   const [errors, setErrors] = useState([])
+  const { t } = useTranslation(['common', 'dialog'])
   const dispatch = useDispatch()
   const [value, setValue] = useState('')
   /**
@@ -65,7 +71,7 @@ const Edit = ({ name, businessId, open, onClose }) => {
   const validate = (values) => {
     if (!values['business-name']) {
       setErrors([
-        'Business name is missing'
+        t('dialog:forms.name')
       ])
       return false
     }
@@ -87,14 +93,17 @@ const Edit = ({ name, businessId, open, onClose }) => {
     <Modal open={open} onClose={onClose}>
       <Form onSubmit={onSubmit} validate={validate}>
         <div css={containerStyles}>
-          <h2 css={titleStyles}>Edit</h2>
+          <h2 css={titleStyles}>{t('common:actions.edit')}</h2>
             <ul>
               {errors.map((error, i) => <li key={`edit-error-${i}`}>{error}</li>)}
             </ul>
           <fieldset css={fieldsetStyles}>
-            <input name="business-name" value={value} onChange={handleChange}/>
-            <input data-edit="cancel" type="button" value="Cancel" onClick={onClose} />
-            <input data-edit="confirm" data-variant="info" type="submit" value="Edit" />
+            <label>
+              <span>{t('common:labels.name')}</span>
+              <input name="business-name" value={value} onChange={handleChange}/>
+            </label>
+            <input data-edit="cancel" type="button" value={t('common:actions.cancel')} onClick={onClose} />
+            <input data-edit="confirm" data-variant="info" type="submit" value={t('common:actions.edit')} />
           </fieldset>
         </div>
       </Form>

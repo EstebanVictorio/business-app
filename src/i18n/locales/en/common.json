@@ -1,0 +1,24 @@
+{
+  "langES": "Spanish",
+  "langEN": "English",
+  "actions": {
+    "edit": "Edit",
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "create": "Create"
+  },
+  "labels": {
+    "name": "Name: {{name}}",
+    "role": "Role: {{role}}",
+    "email": "Email: {{email}}",
+    "phone": "Phone: {{phone}}"
+  },
+  "table": {
+    "headers": {
+      "business": "Business",
+      "role": "Role",
+      "actions": "Actions"
+
+    }
+  }
+}

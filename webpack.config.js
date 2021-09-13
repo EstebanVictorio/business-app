@@ -33,6 +33,7 @@ const config = {
       context: `${root}/context`,
       ds: `${root}/ds`,
       hooks: `${root}/hooks`,
+      i18n: `${root}/i18n`,
       pages: `${root}/pages`,
       store: `${root}/store`,
       templates: `${root}/templates`,

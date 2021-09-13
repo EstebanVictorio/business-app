@@ -2,6 +2,7 @@
 import { jsx, css } from "@emotion/react"
 import Form from "components/Form"
 import { useDispatch } from "react-redux"
+import { useTranslation } from "react-i18next"
 import { deleteLoading } from "store/slice/business"
 import Modal from "components/Modal"
 
@@ -36,6 +37,7 @@ const fieldsetStyles = css`
  */
 const Delete = ({ open, onClose, name, businessId }) => {
   const dispatch = useDispatch()
+  const { t } = useTranslation('common')
 
   const onSubmit = () => {
     dispatch(deleteLoading({ businessId }))
@@ -45,11 +47,11 @@ const Delete = ({ open, onClose, name, businessId }) => {
   return (
     <Modal open={open} onClose={onClose}>
       <Form onSubmit={onSubmit}>
-        <h2 css={titleStyles}>Delete</h2>
+        <h2 css={titleStyles}>{t('actions.delete')}</h2>
         <fieldset css={fieldsetStyles}>
-          <legend>Are you sure you want to delete {name}?</legend>
-          <input type="button" data-delete="cancel" value="Cancel" onClick={onClose} />
-          <input type="submit" data-delete="confirm" data-variant="danger" value="Delete" />
+          <legend>{t('dialog:actions.delete', { entity: name })}</legend>
+          <input type="button" data-delete="cancel" value={t('actions.cancel')} onClick={onClose} />
+          <input type="submit" data-delete="confirm" data-variant="danger" value={t('actions.delete')} />
         </fieldset>
       </Form>
     </Modal>
