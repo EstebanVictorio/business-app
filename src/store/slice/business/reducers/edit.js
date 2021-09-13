@@ -6,13 +6,8 @@ const edit = {
     state.editStatus = 'LOADING'
   },
   success: (state, action) => {
-    for (let i = 0; i < state.businesses.length; i++) {
-      const business = state.businesses[i]
-      if(business.businessId === action.payload.businessId) {
-        state.businesses[i].name = action.payload.name
-        break
-      }
-    }
+    const businessIndex = state.businesses.findIndex(business => business.businessId === action.payload.businessId)
+    state.businesses[businessIndex].name = action.payload.name
     state.editStatus = 'SUCCESS'
   },
   failure: (state) => {

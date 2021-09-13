@@ -37,12 +37,9 @@ const fieldsetStyles = css`
  */
 const Delete = ({ open, onClose, businessId, personId, personName }) => {
   const dispatch = useDispatch()
-  console.log("Person delete dialog onSubmit", personName)
   const onSubmit = () => {
-    console.log("Person delete dialog onSubmit")
     dispatch(deleteLoading({ businessId, personId }))
   }
-  
   
   return (
     <Modal open={open} onClose={onClose}>
@@ -57,6 +54,5 @@ const Delete = ({ open, onClose, businessId, personId, personName }) => {
     </Modal>
   )
 }
-
 
 export default Delete

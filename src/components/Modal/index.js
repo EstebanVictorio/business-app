@@ -5,7 +5,6 @@ import { createPortal } from "react-dom"
 import { ModalContext } from "context/ModalContext"
 import Icon from "components/Icon"
 
-
 const styles = css`
   border: none;
   border-radius: 4px;

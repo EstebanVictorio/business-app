@@ -93,11 +93,9 @@ const Create = ({ businessId, open, onClose }) => {
     <Modal open={open} onClose={onClose}>
       <Form onSubmit={onSubmit} validate={validate}>
         <h2 css={titleStyles}>Create</h2>
-        {errors.length > 0 ? (
-          <ul>
-            {errors.map((error, i) => <li key={`create-error-${i}`}>{error}</li>)}
-          </ul>
-        ) : null}
+        <ul>
+          {errors.map((error, i) => <li key={`create-error-${i}`}>{error}</li>)}
+        </ul>
         <fieldset css={fieldsetStyles}>
           <input name="person-name" />
           <input name="person-role" />
@@ -110,6 +108,5 @@ const Create = ({ businessId, open, onClose }) => {
     </Modal>
   )
 }
-
 
 export default Create

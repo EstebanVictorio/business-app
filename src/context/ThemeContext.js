@@ -16,7 +16,6 @@ const ThemeContext = createContext({
 
 const { Provider } = ThemeContext
 
-
 export { ThemeContext }
 
 /**

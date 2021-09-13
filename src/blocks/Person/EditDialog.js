@@ -123,12 +123,6 @@ const Edit = ({ personName, personId, personRole, personEmail, personPhone, busi
    }
 
   useEffect(() => {
-    console.log("Person: ", {
-      personName,
-      personRole,
-      personEmail,
-      personPhone,
-    })
     if (open && personName && personRole && personEmail && personPhone) {
       setNameValue(personName)
       setRoleValue(personRole)
@@ -171,6 +165,5 @@ const Edit = ({ personName, personId, personRole, personEmail, personPhone, busi
     </Modal>
   )
 }
-
 
 export default Edit

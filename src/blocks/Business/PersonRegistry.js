@@ -6,8 +6,6 @@ import Toggle from "components/Toggle"
 import Icon from "components/Icon"
 import Card from "components/Card"
 import Table from "components/Table"
-import { useParams } from "react-router-dom"
-
 
 const LazyCardGridTemplate = lazy(() => import('templates/CardGridTemplate'))
 
@@ -31,8 +29,6 @@ const PersonRegistry = ({ persons, editAction, deleteAction }) => {
   const handleTableSelect = () => {
     handleSelect('table')
   }
-
-  console.log("Persons: ", persons)
 
   return (
     <div>
