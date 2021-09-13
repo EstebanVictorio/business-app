@@ -6,16 +6,11 @@ const edit = {
     state.editStatus = 'LOADING'
   },
   success: (state, action) => {
-    for (let i = 0; i < state.persons.length; i++) {
-      const person = state.persons[i]
-      if(person.personId === action.payload.personId) {
-        state.persons[i].name = action.payload.name
-        state.persons[i].email = action.payload.email
-        state.persons[i].phone = action.payload.phone
-        state.persons[i].role = action.payload.role
-        break
-      }
-    }
+    const personIndex = state.persons.findIndex(person => person.personId === action.payload.personId)
+    state.persons[personIndex].name = action.payload.name
+    state.persons[personIndex].email = action.payload.email
+    state.persons[personIndex].phone = action.payload.phone
+    state.persons[personIndex].role = action.payload.role
     state.editStatus = 'SUCCESS'
   },
   failure: (state) => {

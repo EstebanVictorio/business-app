@@ -10,8 +10,6 @@ import { queryLoading } from "store/slice/business"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
-
-
 const Home = () => {
   const [createDialogOpen, setCreateDialogOpen] = useState(false)
   const [
@@ -54,7 +52,6 @@ const Home = () => {
       })
     }
   }, [deleted])
-
 
   useEffect(() => {
     dispatch(queryLoading())

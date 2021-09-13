@@ -1,15 +1,10 @@
 import { createContext, useRef } from "react"
 
-
-
 /**
  * @type {React.Context<HTMLElement>} ModalContext
  */
 const ModalContext = createContext()
-
-
 const { Provider } = ModalContext
-
 
 /**
  * @typedef {{
@@ -19,7 +14,6 @@ const { Provider } = ModalContext
  */
  const ModalProvider = ({ children, root }) => {
   const rootRef = useRef(root)
-  console.log("Root from ctx:", rootRef.current)
   return (
     <Provider value={rootRef.current}>
       {children}
@@ -27,9 +21,5 @@ const { Provider } = ModalContext
   )
 }
 
-
-
 export { ModalContext }
-
-
 export default ModalProvider

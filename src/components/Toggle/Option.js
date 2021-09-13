@@ -10,7 +10,6 @@ const styles = css`
     display: none;
   }
 
-
   &[data-selected="true"] {
     color: var(--white);
     background-color: var(--blue);

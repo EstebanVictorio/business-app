@@ -11,7 +11,6 @@ import CreateDialog from "blocks/Person/CreateDialog"
 import EditDialog from "blocks/Person/EditDialog"
 import DeleteDialog from "blocks/Person/DeleteDialog"
 
-
 /**
  * 
  * @type {FC} Business
@@ -28,12 +27,12 @@ const Business = () => {
   const edited = useSelector(state => state.person.editStatus === 'SUCCESS')
   const deleted = useSelector(state => state.person.deleteStatus === 'SUCCESS')
   const [createDialogOpen,setCreateDialogOpen] = useState(false)
-  const [{ open: editDialogOpen ,draftPerson: editDraftPerson },setEditDialogOpen] = useState({
+  const [{ open: editDialogOpen, draftPerson: editDraftPerson }, setEditDialogOpen] = useState({
     open: false,
     draftPerson: null
   })
 
-  const [{ open: deleteDialogOpen ,draftPerson: deleteDraftPerson },setDeleteDialogOpen] = useState({
+  const [{ open: deleteDialogOpen, draftPerson: deleteDraftPerson }, setDeleteDialogOpen] = useState({
     open: false,
     draftPerson: null
   })

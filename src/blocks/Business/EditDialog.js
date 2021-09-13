@@ -88,11 +88,9 @@ const Edit = ({ name, businessId, open, onClose }) => {
       <Form onSubmit={onSubmit} validate={validate}>
         <div css={containerStyles}>
           <h2 css={titleStyles}>Edit</h2>
-          {errors.length > 0 ? (
             <ul>
               {errors.map((error, i) => <li key={`edit-error-${i}`}>{error}</li>)}
             </ul>
-          ) : null}
           <fieldset css={fieldsetStyles}>
             <input name="business-name" value={value} onChange={handleChange}/>
             <input data-edit="cancel" type="button" value="Cancel" onClick={onClose} />
@@ -103,6 +101,5 @@ const Edit = ({ name, businessId, open, onClose }) => {
     </Modal>
   )
 }
-
 
 export default Edit

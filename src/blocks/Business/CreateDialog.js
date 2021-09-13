@@ -6,7 +6,6 @@ import { useDispatch } from "react-redux"
 import { addLoading } from "store/slice/business"
 import Modal from "components/Modal"
 
-
 const titleStyles = css`
   margin: 0;
   width: 100%;
@@ -67,11 +66,9 @@ const Create = ({ open, onClose }) => {
     <Modal open={open} onClose={onClose}>
       <Form onSubmit={onSubmit} validate={validate}>
         <h2 css={titleStyles}>Create</h2>
-        {errors.length > 0 ? (
-          <ul>
-            {errors.map((error, i) => <li key={`create-error-${i}`}>{error}</li>)}
-          </ul>
-        ) : null}
+        <ul>
+          {errors.map((error, i) => <li key={`create-error-${i}`}>{error}</li>)}
+        </ul>
         <fieldset css={fieldsetStyles}>
           <input name="business-name" />
           <input data-create="cancel" type="button" value="Cancel" onClick={onClose} />

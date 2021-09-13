@@ -8,7 +8,6 @@ import Cell from "./Cell"
 import Body from "./Body"
 import Head from "./Head"
 
-
 const styles = css`
   width: 100%;
   max-width: 90rem;
@@ -59,12 +58,10 @@ const Table = ({ children }) => {
   )
 }
 
-
 Table.Head = Head
 Table.Body = Body
 Table.Header = Header
 Table.Row = Row
 Table.Cell = Cell
-
 
 export default Table
