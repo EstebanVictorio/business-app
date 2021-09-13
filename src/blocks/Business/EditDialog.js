@@ -71,7 +71,7 @@ const Edit = ({ name, businessId, open, onClose }) => {
   const validate = (values) => {
     if (!values['business-name']) {
       setErrors([
-        t('dialog:forms.name')
+        { type: 'name', pass: false }
       ])
       return false
     }
@@ -94,9 +94,7 @@ const Edit = ({ name, businessId, open, onClose }) => {
       <Form onSubmit={onSubmit} validate={validate}>
         <div css={containerStyles}>
           <h2 css={titleStyles}>{t('common:actions.edit')}</h2>
-            <ul>
-              {errors.map((error, i) => <li key={`edit-error-${i}`}>{error}</li>)}
-            </ul>
+          <Form.Errors errors={errors}/>
           <fieldset css={fieldsetStyles}>
             <label>
               <span>{t('common:labels.name')}</span>

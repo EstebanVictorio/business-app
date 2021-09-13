@@ -5,7 +5,7 @@
   "forms" : {
     "name": "Name is missing",
     "role": "Role is missing",
-    "email": "email is missing",
+    "email": "Email is missing",
     "phone": "Phone is missing"
   }
 }

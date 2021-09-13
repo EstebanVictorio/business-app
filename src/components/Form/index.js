@@ -1,12 +1,15 @@
 import { useCallback, useRef } from "react"
 import { mapEntriesToValues } from "utils/form"
+import Errors from "./Errors"
 
 /**
  * @typedef {{
  *  onSubmit: (value) => void
  *  validate?: () => boolean
  * }} Props
- * @type {FC<Props>} Form
+ * @type {FC<Props> & {
+ *  Errors: FC<import('./Errors').Props>
+ * }} Form
  */
 const Form = ({ children, onSubmit, validate }) => {
   /**
@@ -38,5 +41,7 @@ const Form = ({ children, onSubmit, validate }) => {
     </form>
   )
 }
+
+Form.Errors = Errors
 
 export default Form

@@ -105,19 +105,19 @@ const Edit = ({ personName, personId, personRole, personEmail, personPhone, busi
      const validateErrors = []
  
      if (!values['person-name']) {
-       validateErrors.push(t('dialog:forms.name'))
+       validateErrors.push({ type: 'name', pass: false })
      }
  
      if (!values['person-role']) {
-       validateErrors.push(t('dialog:forms.role'))
+       validateErrors.push({ type: 'role', pass: false })
      }
  
      if (!values['person-email']) {
-       validateErrors.push(t('dialog:forms.email'))
+       validateErrors.push({ type: 'email', pass: false })
      }
  
      if (!values['person-phone']) {
-       validateErrors.push(t('dialog:forms.phone'))
+       validateErrors.push({ type: 'phone', pass: false })
      }
  
      if(validateErrors.length > 0) {
@@ -153,11 +153,7 @@ const Edit = ({ personName, personId, personRole, personEmail, personPhone, busi
       <Form onSubmit={onSubmit} validate={validate}>
         <div css={containerStyles}>
           <h2 css={titleStyles}>{t('common:actions.edit')}</h2>
-          {errors.length > 0 ? (
-            <ul>
-              {errors.map((error, i) => <li key={`edit-error-${i}`}>{error}</li>)}
-            </ul>
-          ) : null}
+          <Form.Errors errors={errors} />
           <fieldset css={fieldsetStyles}>
             <label>
               <span>{t('common:labels.name')}</span>

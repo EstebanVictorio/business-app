@@ -55,7 +55,7 @@ const Create = ({ open, onClose }) => {
   const validate = (values) => {
     if (!values['business-name']) {
       setErrors([
-        t('dialog:forms.name')
+        { type: 'name', pass: false }
       ])
       return false
     }
@@ -71,9 +71,7 @@ const Create = ({ open, onClose }) => {
     <Modal open={open} onClose={onClose}>
       <Form onSubmit={onSubmit} validate={validate}>
         <h2 css={titleStyles}>{t("common:actions.create")}</h2>
-        <ul>
-          {errors.map((error, i) => <li key={`create-error-${i}`}>{error}</li>)}
-        </ul>
+        <Form.Errors errors={errors} />
         <fieldset css={fieldsetStyles}>
           <label>
             <span>{t('common:labels.name')}</span>

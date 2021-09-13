@@ -61,19 +61,19 @@ const Create = ({ businessId, open, onClose }) => {
     const validateErrors = []
 
     if (!values['person-name']) {
-      validateErrors.push(t('dialog:forms.name'))
+      validateErrors.push({ type: 'name', pass: false })
     }
 
     if (!values['person-role']) {
-      validateErrors.push(t('dialog:forms.role'))
+      validateErrors.push({ type: 'role', pass: false })
     }
 
     if (!values['person-email']) {
-      validateErrors.push(t('dialog:forms.email'))
+      validateErrors.push({ type: 'email', pass: false })
     }
 
     if (!values['person-phone']) {
-      validateErrors.push(t('dialog:forms.phone'))
+      validateErrors.push({ type: 'phone', pass: false })
     }
 
     if(validateErrors.length > 0) {
@@ -98,9 +98,7 @@ const Create = ({ businessId, open, onClose }) => {
     <Modal open={open} onClose={onClose}>
       <Form onSubmit={onSubmit} validate={validate}>
         <h2 css={titleStyles}>{t('common:actions.create')}</h2>
-        <ul>
-          {errors.map((error, i) => <li key={`create-error-${i}`}>{error}</li>)}
-        </ul>
+        <Form.Errors errors={errors} />
         <fieldset css={fieldsetStyles}>
           <label>
             <span>{t('common:labels.name')}</span>
