@@ -6,6 +6,7 @@ import Toggle from "components/Toggle"
 import Icon from "components/Icon"
 import Card from "components/Card"
 import Table from "components/Table"
+import { useTranslation } from "react-i18next"
 
 const LazyCardGridTemplate = lazy(() => import('templates/CardGridTemplate'))
 
@@ -22,6 +23,8 @@ const PersonRegistry = ({ persons, editAction, deleteAction }) => {
   * @type {{ id?: string }} params
   */
   const { selected, handleSelect } = useToggle('card-grid')
+  const { t } = useTranslation('common')
+
   const handleCardGridSelect = () => {
     handleSelect('card-grid')
   }
@@ -50,30 +53,30 @@ const PersonRegistry = ({ persons, editAction, deleteAction }) => {
                 persons.map(({ personId, name, role, phone, email }) => (
                   <Card key={personId}>
                     <Card.Header>
-                      Name: {name}
+                      {t('labels.name', { name })}
                     </Card.Header>
                     <Card.Actions>
                       <div css={css`display: flex; justify-content: flex-end;`}>
                         <input
                           type="button"
                           data-variant="info"
-                          value="Edit"
+                          value={t('actions.edit')}
                           onClick={() => editAction(personId, name, role, email, phone)}
                         />
                         <input
                           type="button"
                           data-variant="danger"
-                          value="Delete"
+                          value={t('actions.delete')}
                           onClick={() => deleteAction(personId, name)}
                         />
                       </div>
                     </Card.Actions>
                     <Card.Body>
-                      Role: {role}
+                    {t('labels.role', { role })}
                     </Card.Body>
                     <Card.Footer>
-                      <span>Phone: {phone}</span>
-                      <span>Email: {email}</span>
+                      <p>{t('labels.phone', { phone })}</p>
+                      <p>{t('labels.email', { email })}</p>
                     </Card.Footer>
                   </Card>
                 ))
@@ -88,13 +91,13 @@ const PersonRegistry = ({ persons, editAction, deleteAction }) => {
             <Table.Head>
               <Table.Row>
                 <Table.Header width="50%">
-                  Name
+                  {t('table.headers.business')}
                 </Table.Header>
                 <Table.Header width="25%">
-                  Role
+                {t('table.headers.role')}
                 </Table.Header>
                 <Table.Header width="25%">
-                  Actions
+                {t('table.headers.actions')}
                 </Table.Header>
               </Table.Row>
             </Table.Head>
@@ -111,13 +114,13 @@ const PersonRegistry = ({ persons, editAction, deleteAction }) => {
                   <input
                     type="button"
                     data-variant="info"
-                    value="Edit"
+                    value={t('actions.edit')}
                     onClick={() => editAction(personId,name, role, email, phone)}
                   />
                   <input
                     type="button"
                     data-variant="danger"
-                    value="Delete"
+                    value={t('actions.delete')}
                     onClick={() => deleteAction(personId, name)}
                   />
                   </Table.Cell>

@@ -1,0 +1,11 @@
+{
+  "actions": {
+    "delete": "Are you sure you want to delete {{entity}}?"
+  },
+  "forms" : {
+    "name": "Name is missing",
+    "role": "Role is missing",
+    "email": "email is missing",
+    "phone": "Phone is missing"
+  }
+}
